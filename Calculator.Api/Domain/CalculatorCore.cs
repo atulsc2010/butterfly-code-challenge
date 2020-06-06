@@ -7,17 +7,17 @@ namespace Calculator.Api.Domain
 {
     public class CalculatorCore
     {
-        public double Add(double a, double b) 
+        public double Add(double a, double b)
         {
-            if (Overflow(a,b))
-                return double.NaN;
-            
+            if (Overflow(a+b))
+                return double.NaN; 
+                        
             return a + b;            
         }
 
         public double Subtract(double a, double b)
         {
-            if (Overflow(a, b))
+            if (Overflow(a-b))
                 return double.NaN;
 
             return a - b;
@@ -25,7 +25,7 @@ namespace Calculator.Api.Domain
 
         public double Multiply(double a, double b)
         {
-            if (Overflow(a, b))
+            if (Overflow(a*b))
                 return double.NaN;
 
             return a * b;
@@ -33,15 +33,15 @@ namespace Calculator.Api.Domain
 
         public double Divide(double a, double b)
         {
-            if (Overflow(a, b) || b == 0)
+            if (Overflow(a / b) || b == 0)
                 return double.NaN;
 
             return a / b;
         }
 
-        private bool Overflow(double a, double b) 
+        private bool Overflow(double a)
         {
-            return (a >= double.MaxValue || b >= double.MaxValue) || (a <= double.MinValue || b <= double.MinValue);
+            return double.IsInfinity(a) || a >= double.MaxValue || a <= double.MinValue ;
         }
     }
 }
