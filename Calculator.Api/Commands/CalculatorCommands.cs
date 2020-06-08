@@ -34,7 +34,7 @@ namespace Calculator.Api.Commands
 
         public CalculatorResponse ExecuteDivide(string input)
         {
-            var subtract = new MultiplyCommandHandler(input, _logger);
+            var subtract = new DivideCommandHandler(input, _logger);
             return subtract.Handle();
         }
     }
