@@ -1,4 +1,5 @@
-﻿using Calculator.Api.Domain;
+﻿using Calculator.Api.Commands;
+using Calculator.Api.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,7 +13,6 @@ namespace Calculator.Api.Controllers
     public class CalculatorController : ControllerBase
     {
         private readonly ILogger<CalculatorController> _logger;
-
         public CalculatorController(ILogger<CalculatorController> logger)
         {
             _logger = logger;
@@ -25,35 +25,67 @@ namespace Calculator.Api.Controllers
         }
 
         [HttpGet("add/{input}")]
-        public ActionResult<double> Add([FromRoute] string input)
+        public ActionResult<CalculatorResponse> Add([FromRoute] string input)
         {
-            var values = input.Split(',', '+');
-            var numbers = new List<double>();
-            double sum = double.NaN;
+            var command = new CalculatorCommands(_logger);
+            var response = command.ExecuteAdd(input);
 
-            if (values.Length <= 1)
-                return BadRequest("2 or more numbers must be sent for addition");
-            try
+            if (response.Status == "Success")
             {
-                foreach (var value in values)
-                {
-                    numbers.Add(double.Parse(value.Trim()));
-                }
-
-                if (numbers != null)
-                {
-                    var calc = new CalculatorCore();
-                    sum = calc.Add(numbers.ToArray());
-                }
-
-                return Ok(sum);
+                return Ok(response);
             }
-            catch (Exception ex)
+            else 
             {
-                _logger.LogError($"Invalid input received : {ex.StackTrace}");
-                return BadRequest($"Invalid input : {ex.Message}");
+                return BadRequest(response);
             }
+        }
 
+        [HttpGet("subtract/{input}")]
+        public ActionResult<CalculatorResponse> Subtract([FromRoute] string input)
+        {
+            var command = new CalculatorCommands(_logger);
+            var response = command.ExecuteSubtract(input);
+
+            if (response.Status == "Success")
+            {
+                return Ok(response);
+            }
+            else
+            {
+                return BadRequest(response);
+            }
+        }
+
+        [HttpGet("multiply/{input}")]
+        public ActionResult<CalculatorResponse> Multiply([FromRoute] string input)
+        {
+            var command = new CalculatorCommands(_logger);
+            var response = command.ExecuteMultiply(input);
+
+            if (response.Status == "Success")
+            {
+                return Ok(response);
+            }
+            else
+            {
+                return BadRequest(response);
+            }
+        }
+
+        [HttpGet("divide/{input}")]
+        public ActionResult<CalculatorResponse> Divide([FromRoute] string input)
+        {
+            var command = new CalculatorCommands(_logger);
+            var response = command.ExecuteDivide(input);
+
+            if (response.Status == "Success")
+            {
+                return Ok(response);
+            }
+            else
+            {
+                return BadRequest(response);
+            }
         }
 
     }
