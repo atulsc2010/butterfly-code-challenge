@@ -44,12 +44,20 @@ namespace Calculator.Api.Handlers
                 if (numbers != null)
                 {
                     var calc = new CalculatorCore();
+
+                    if ( numbers.Any( n => n == 0))
+                        return response = new CalculatorResponse
+                        {
+                            Status = "Error",
+                            Message = "Division by Zero not allowed.",
+                        };
+
                     result = calc.Divide(numbers.ToArray());
                 }
 
                 return response = new CalculatorResponse
                 {
-                    Result = result,
+                    _Result = result,
                     Status = "Success"
                 };
             }

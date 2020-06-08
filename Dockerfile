@@ -7,7 +7,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build
 WORKDIR /src
-COPY ["Calculator.Api.csproj", "Calculator.Api/"]
+COPY ["Calculator.Api/Calculator.Api.csproj", "Calculator.Api/"]
 RUN dotnet restore "Calculator.Api/Calculator.Api.csproj"
 COPY . .
 WORKDIR "/src/Calculator.Api"

@@ -47,7 +47,7 @@ namespace Calculator.Api.Handlers
 
                 return response = new CalculatorResponse
                 {
-                    Result = result,
+                    _Result = result,
                     Status = "Success"
                 };
             }

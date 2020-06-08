@@ -73,7 +73,7 @@ namespace Calculator.Api.Domain
 
         public double Divide(double a, double b)
         {
-            if (Overflow(a / b) || b == 0)
+            if (b == 0 || Overflow(a / b))
                 return double.NaN;
 
             return a / b;
