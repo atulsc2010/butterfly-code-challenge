@@ -1,6 +1,6 @@
 ## Design Overview
 
-![design diagram](/Design.jpg) 
+![design diagram](/Design.JPG) 
 
 ### How to test
 - Use Postman/browser to run the following GET end points
