@@ -1,16 +1,16 @@
 
 
-### How to test the Apis 
+### How to test
 - Use Postman/browser to run the following GET end points
 ```
     #all Api have the following Url pattern 
         http://domain-name.com/api/calculator/operation/comma-delimted-numbers
 
     # Below Api end points are available
-    http://domain/api/calculator/add/1.7,0.9,2,6.8
-    http://domain/api/calculator/subtract/1.7,0.9,2,6.8
-    http://domain/api/calculator/multiply/1.7,0.9,2,6.8
-    http://domain/api/calculator/divide/1.7,0.9,2,6.8
+    http://demo.altocumulus.it/api/calculator/add/1.7,0.9,2,6.8
+    http://demo.altocumulus.it/api/calculator/subtract/1.7,0.9,2,6.8
+    http://demo.altocumulus.it/api/calculator/multiply/1.7,0.9,2,6.8
+    http://demo.altocumulus.it/api/calculator/divide/1.7,0.9,2,6.8
 
     # health-check
     http://domain/api/calculator
@@ -33,7 +33,7 @@
     - /Handlers - contain the command handlers which handle pre/post validation,data mapping and trigger the calculations in the Domain     
 - Influenced by CQRS coding pattern. Refactored original code by applying Single Responsibility Principal and Dependency injection where possible. 
 - Test Driven Development (Test first) 
-    -/Calculator.Api.Tests - Contains the Unit Test cases for domain logic
+    - /Calculator.Api.Tests - Contains the Unit Test cases for domain logic
 - Serverless architecture
 - Containerized app using Docker
 
@@ -43,7 +43,7 @@
 - AWS ECR for image repository and AWS Fargate cluster for running containers
 - custom domain mapped to AWS Fargate container IP address
 
-### Possible options or improvements
+### Possible options and improvements
 - Deploy as AWS Api Gateway - for simpler serverless deployment without containers 
 - Command/Query using MediatR 
 - Add JsonApi to use standardized schema for request/response instead of custom Json
