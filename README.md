@@ -1,4 +1,6 @@
+## Design Overview
 
+![design diagram](/Design.jpg) 
 
 ### How to test
 - Use Postman/browser to run the following GET end points
@@ -36,6 +38,7 @@
     - /Calculator.Api.Tests - Contains the Unit Test cases for domain logic
 - Serverless architecture
 - Containerized app using Docker
+
 
 ### Tech stack and libraries used  
 - .Net core web Api, xUnit with Fluent assertions for testing  
