@@ -15,7 +15,7 @@
     http://demo.altocumulus.it/api/calculator/divide/1.7,0.9,2,6.8
 
     # health-check
-    http://domain/api/calculator
+    http://demo.altocumulus.it/api/calculator
 
     # Response schema 
     {
